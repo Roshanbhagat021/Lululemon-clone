@@ -36,7 +36,7 @@ export const MenDropDown = () => {
                 </Box>
                 <Box  p="0 10px">
                     <MenuGroup title='MEN"S CLOTHES '>
-                        <MenuItem>Pants</MenuItem>
+                        <MenuItem><Link to="/men">Pants</Link></MenuItem>
                         <MenuItem><Link to="/men">Button Down Shirts</Link></MenuItem>
                         <MenuItem><Link to="/men">Coats & Jackets</Link></MenuItem>
                         <MenuItem>Half Zip Sweetshirts </MenuItem>

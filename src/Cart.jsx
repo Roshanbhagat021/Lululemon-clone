@@ -35,7 +35,7 @@ export const Cart = () => {
         let total = 0;
         products.forEach((product) => {
             const itemPrice = Number(product.price);
-            const itemQuantity = Number(product.quantity|| 1); // Ensure quantity is converted to a number
+            const itemQuantity = Number(product.quantity|| 1); 
             total += itemPrice * itemQuantity;
         });
         setSubtotal(total);

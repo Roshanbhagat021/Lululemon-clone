@@ -10,43 +10,24 @@ import needle from "./image/needle.png";
 
 export const Login = () => {
   const [username, setUsername] = useState('');
+  const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [errorEmail, setErrorEmail] = useState('');
   const [errorMessage, setErrorMessage] = useState('');
   const navigate = useNavigate();
 
-  const handleSubmit = async (e) => {
+  const handleSubmit = (e) => {
     e.preventDefault();
-    try {
-      const response = await fetch('https://reqres.in/api/login', {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ username, password }),
-      });
-      const data = await response.json();
-      if (response.ok) {
-        localStorage.setItem('token', data.token);
-        navigate('/');
-      } else {
-        setErrorEmail(data.error);
-        setErrorMessage(data.error);
-        console.error(data.error);
-      }
-    } catch (error) {
-      console.error('Error:', error);
+    if (username && email && password) {
+      localStorage.setItem('username', username);
+      localStorage.setItem('email', email);
+      localStorage.setItem('password', password);
+      navigate('/');
+    } else {
+      setErrorEmail('Please fill in all fields');
+      setErrorMessage('Please fill in all fields');
     }
-  }
-
-  const handleEmailChange = (e) => {
-    setUsername(e.target.value);
-    setErrorEmail("")
-   
-  }
-
-  const handlePasswordChange = (e) => {
-    setPassword(e.target.value);
-    setErrorMessage('');
-  }
+  };
 
   return (
     <Box m="50px 130px">
@@ -68,19 +49,27 @@ export const Login = () => {
           <form onSubmit={handleSubmit}>
             <Box w="100%" p="0px 100px" mt="40px">
               <Heading size="md" mb="15px">Sign in to your member account</Heading>
+              <label>Username</label>
+              <Input
+                placeholder="Username"
+                value={username}
+                onChange={(e) => setUsername(e.target.value)}
+                mt="5px" mb="10px"
+                border="1px solid black"></Input>
               <label>Email address</label>
               <Input
-                text="email"
-                value={username}
-                onChange={handleEmailChange}
+                placeholder="Email"
+                value={email}
+                onChange={(e) => setEmail(e.target.value)}
                 mt="5px" mb="10px"
                 border="1px solid black"></Input>
                 {errorEmail&& <Text color="red" fontSize="14px">Please enter an email address</Text>}
               <label>Password</label>
               <Input
-                text="password"
+                placeholder="Password"
+                type="password"
                 value={password}
-                onChange={handlePasswordChange}
+                onChange={(e) => setPassword(e.target.value)}
                 mt="5px" mb="10px"
                 border="1px solid black"></Input>
               {errorMessage && <Text color="red" fontSize="14px">Please enter your password</Text>}

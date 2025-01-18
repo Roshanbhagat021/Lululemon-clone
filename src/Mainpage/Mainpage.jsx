@@ -3,7 +3,7 @@ import { Shorts } from "./Shorts"
 import { Box,Heading,Flex,Image} from "@chakra-ui/react"
 import { useEffect, useState } from "react"
 import { Slider } from "./Slider"
-import { SkirtPoster } from "./SkirtPoster"
+import { WorkoutPoster } from "./WorkoutPoster"
 import { WomenSlider } from "./WomenSlider"
 import { ColorPoster } from "./ColorPoster"
 
@@ -34,10 +34,10 @@ export const Mainpage = () => {
         <Poster />
         <Shorts />
         <Box>
-            <Heading textAlign="center" size="2xl">Get into these shorts, and everything goes.</Heading>
+            <Heading fontWeight="bold" color="black" textAlign="center" size="2xl">New gear for a lucky year.</Heading>
             <Slider images={short} />
         </Box>
-        <SkirtPoster />
+        <WorkoutPoster />
         <Box>
             <WomenSlider images={women} />
         </Box>

@@ -18,7 +18,7 @@ export const MotherdayDD = () => {
                     letterSpacing={0.6}
                     onClick={handleMenuToggle}
                 >
-                    MOTHER"S DAY
+                    What's New
                 </MenuButton>
             <MenuList >
                 <Flex>
